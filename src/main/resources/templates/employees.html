@@ -55,7 +55,7 @@
             <td th:text="${employees.getJobTitle()}"></td>
 
             <!--pensja-->
-            <td th:text="${#numbers.formatInteger(employees.getSalary(), 3, 'WHITESPACE')}"></td>
+            <td th:text="${#numbers.formatDecimal(employees.getSalary(), 3, 'WHITESPACE', 2, 'COMMA')}"></td>
 
             <!--data zatrudnienia-->
             <td th:text="${#calendars.format(employees.getDateOfEmployment(), 'dd.MM.yyyy')}"></td>
@@ -67,7 +67,7 @@
 
             <!--umiejętności-->
             <td>
-                <p th:each="skill, iterStat : ${employees.getSkills()}" th:text="|${skill.getName()} ${skill.getLevel()} ${iterStat.last ? '':','}|"></p>
+                <p th:each="skill, iterStat : ${employees.getSkills()}" th:text="|${skill.getName()} (${skill.getLevel()}) ${iterStat.last ? '':','}|"></p>
             </td>
 
             <!--uwagi-->
